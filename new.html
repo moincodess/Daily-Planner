@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <title>To-Do List</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="topsec">
+            <img
+                src="https://plus.unsplash.com/premium_photo-1681487867978-1b83ce2625c5?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <h1>
+                My To-Do List
+            </h1>
+            <button id="toggle" class="btn"><i class="fa-solid fa-moon"></i></button>
+        </div>
+
+
+        <p style="color: grey;">
+            Stay organized. Get things done.
+        </p>
+        <div id="mid">
+          <div class="inputArea">
+            <input type="text" placeholder="What do you need to do?" id="input">
+            <div class="warn" style="color: red; font-weight: 700.;">Please enter a task. </div>
+            </div>
+
+            <button type="submit" id="addit" class="btn">＋ Add Task</button>
+        </div>
+
+
+
+
+        <div id="main">
+
+
+            <div class="filters">
+                <button class="filter-btn">All</button>
+                <button class="filter-btn">Active</button>
+                <button class="filter-btn">Completed</button>
+            </div>
+            <div class="task-info">
+
+                <div class="tasks-left">
+                    <span id="tasks-count">0</span>
+                    <span>Tasks Left</span>
+                </div>
+
+                <span class="vertical-divider"></span>
+
+                <button type="reset" id="reset" class="clear-btn">
+                    🗑️ Clear Completed
+                </button>
+            </div>
+
+
+        </div>
+        <div id="tasks">
+         
+            <div class="task-box">
+                
+            </div>
+
+        </div>
+
+
+        <hr style="color: lightgray;">
+
+        <div><i class="fa-regular fa-heart"></i> Small steps everyday lead to big results.</div>
+
+    </div>
+
+<script src="new.js"></script>
+</body>
+
+</html>
