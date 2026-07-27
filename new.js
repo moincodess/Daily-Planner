@@ -3,7 +3,7 @@ const taskContainer = document.querySelector("#tasks");
 const count = document.querySelector("#tasks-count");
 const resetBtn = document.querySelector("#reset");
 const color = document.body.querySelector("#toggle");
-let theme = localStorage.getItem("theme");      
+let theme = localStorage.getItem("theme");
 document.body.classList.add(theme);
 
 // All the tasks live here
@@ -31,18 +31,16 @@ function renderTasks() {
                 <i class="fa-solid fa-trash"></i>
             </button> `;
 
-            taskContainer.appendChild(task);
+        taskContainer.appendChild(task);
 
-
-      const cb = document.querySelector('input[type="checkbox"]');
+        const cb = task.querySelector('input[type="checkbox"]');
 
         cb.addEventListener("change", function () {
-           if(taskObj.completed){
-            
-           }
-
-            localStorage.setItem("tasks", JSON.stringify(taskArr));
-            renderTasks();
+   
+         taskObj.completed = cb.checked;
+    
+         localStorage.setItem("tasks", JSON.stringify(taskArr));
+        renderTasks();
         });
 
 
@@ -62,25 +60,26 @@ function renderTasks() {
         });
 
         count.textContent = `${taskArr.length}`;
+
     }
     )
 };
 
 renderTasks();  //called when the display refreshes
 
-color.addEventListener("click", function(){
-    if(document.body.classList.contains("dark")){
-      
+color.addEventListener("click", function () {
+    if (document.body.classList.contains("dark")) {
+
         document.body.classList.remove("dark");
-        localStorage.removeItem("theme");       
-     
+        localStorage.removeItem("theme");
+
     }
-    else{
+    else {
         document.body.classList.add("dark");
-        localStorage.setItem("theme","dark");
+        localStorage.setItem("theme", "dark");
     }
 
-    
+
 })
 
 
@@ -98,6 +97,7 @@ btn.addEventListener("click", function (dets) {
     }
 
     const taskObj = {
+        id: count,
         text: input.value,
         completed: false
     };
