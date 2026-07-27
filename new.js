@@ -1,14 +1,10 @@
 let btn = document.querySelector("#addit");
-let input = document.querySelector("#input");
 const taskContainer = document.querySelector("#tasks");
 const count = document.querySelector("#tasks-count");
 const resetBtn = document.querySelector("#reset");
-
-
-const taskObj = {
-    text: input.value,
-    completed: false
-};
+const color = document.body.querySelector("#toggle");
+let theme = localStorage.getItem("theme");      
+document.body.classList.add(theme);
 
 // All the tasks live here
 const taskArr = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -35,7 +31,20 @@ function renderTasks() {
                 <i class="fa-solid fa-trash"></i>
             </button> `;
 
-        taskContainer.appendChild(task);
+            taskContainer.appendChild(task);
+
+
+      const cb = document.querySelector('input[type="checkbox"]');
+
+        cb.addEventListener("change", function () {
+           if(taskObj.completed){
+            
+           }
+
+            localStorage.setItem("tasks", JSON.stringify(taskArr));
+            renderTasks();
+        });
+
 
         // ----Delete Button for each task--------
 
@@ -51,12 +60,28 @@ function renderTasks() {
             renderTasks(); //to update the frontend whenever something is dlted
 
         });
-        count.textContent=`${taskArr.length}`;
+
+        count.textContent = `${taskArr.length}`;
     }
     )
 };
 
 renderTasks();  //called when the display refreshes
+
+color.addEventListener("click", function(){
+    if(document.body.classList.contains("dark")){
+      
+        document.body.classList.remove("dark");
+        localStorage.removeItem("theme");       
+     
+    }
+    else{
+        document.body.classList.add("dark");
+        localStorage.setItem("theme","dark");
+    }
+
+    
+})
 
 
 btn.addEventListener("click", function (dets) {
@@ -84,15 +109,6 @@ btn.addEventListener("click", function (dets) {
     input.value = "";
     renderTasks();
 });
-
-checkbox.addEventListener("change", function () {
- taskObj.completed = checkbox.checked;
-    
-    localStorage.setItem("tasks", JSON.stringify(taskArr));
-    renderTasks();
-});
-
-
 
 
 

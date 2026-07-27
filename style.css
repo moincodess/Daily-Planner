@@ -1,3 +1,25 @@
+:root{
+    --bg-color: #f5f7fb;
+    --container-bg: white;
+    --text-color: #222;
+    --task-bg: #f5f5f5;
+    --border-color: #d1d5db;
+    --primary: #6366F1;
+}
+
+body{
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+.container{
+    background: var(--container-bg);
+}
+
+.tasks-box{
+    background: var(--task-bg);
+    border-color: var(--border-color);
+}
+/* till this chatgpt helped me */
 body {
     margin: 0;
     height: 100vh;
@@ -260,3 +282,12 @@ input[type="text"] {
     transform: scale(1.05);
 
 }
+
+.dark{
+  --bg-color: #111827;
+--container-bg: #1F2937;
+--task-bg: #374151;
+--text-color: #F9FAFB;
+--border-color: #4B5563;
+--primary: #6366F1;
+} 
