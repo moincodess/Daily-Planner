@@ -1,7 +1,7 @@
 let btn = document.querySelector("#addit");
 const taskContainer = document.querySelector("#tasks");
 const count = document.querySelector("#tasks-count");
-const resetBtn = document.querySelector("#reset");
+const resetBtn = document.querySelector(".clear-btn");
 const color = document.body.querySelector("#toggle");
 let theme = localStorage.getItem("theme");
 document.body.classList.add(theme);
@@ -81,6 +81,8 @@ color.addEventListener("click", function () {
 
 
 })
+
+
 
 
 btn.addEventListener("click", function (dets) {
