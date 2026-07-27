@@ -4,11 +4,15 @@ const count = document.querySelector("#tasks-count");
 const resetBtn = document.querySelector(".clear-btn");
 const color = document.body.querySelector("#toggle");
 let theme = localStorage.getItem("theme");
+
+const allBtn = document.querySelector("#all");
+const activeBtn = document.querySelector("#active");
+const compBtn = document.querySelector("#comp");
+
 document.body.classList.add(theme);
 
 // All the tasks live here
-const taskArr = JSON.parse(localStorage.getItem("tasks")) || [];
-
+let taskArr = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
 function renderTasks() {
@@ -36,11 +40,11 @@ function renderTasks() {
         const cb = task.querySelector('input[type="checkbox"]');
 
         cb.addEventListener("change", function () {
-   
-         taskObj.completed = cb.checked;
-    
-         localStorage.setItem("tasks", JSON.stringify(taskArr));
-        renderTasks();
+
+            taskObj.completed = cb.checked;
+
+            localStorage.setItem("tasks", JSON.stringify(taskArr));
+            renderTasks();
         });
 
 
@@ -59,7 +63,8 @@ function renderTasks() {
 
         });
 
-        count.textContent = `${taskArr.length}`;
+        const tempArr = taskArr.filter(task => task.completed === false);
+        count.textContent = tempArr.length;
 
     }
     )
@@ -67,6 +72,16 @@ function renderTasks() {
 
 renderTasks();  //called when the display refreshes
 
+
+resetBtn.addEventListener("click", function () {
+
+    taskArr = taskArr.filter(task => !task.completed)
+    localStorage.setItem("tasks", JSON.stringify(taskArr));
+
+    renderTasks(); //to update the frontend whenever something is dlted
+
+
+});
 color.addEventListener("click", function () {
     if (document.body.classList.contains("dark")) {
 
@@ -78,8 +93,6 @@ color.addEventListener("click", function () {
         document.body.classList.add("dark");
         localStorage.setItem("theme", "dark");
     }
-
-
 })
 
 
