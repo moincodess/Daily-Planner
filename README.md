@@ -1,4 +1,4 @@
-Made this using Html, css and Javascript
+Daily Planner for your every day for making your days structured....
 
 <img width="1086" height="767" alt="image" src="https://github.com/user-attachments/assets/da736570-42a2-4354-aedb-5911ed5d7a8c" />
 
