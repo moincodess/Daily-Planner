@@ -11,15 +11,31 @@ const compBtn = document.querySelector("#comp");
 
 document.body.classList.add(theme);
 
+let taskToShow = [];
+
 // All the tasks live here
 let taskArr = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
-function renderTasks() {
+
+
+function renderTasks(filter = "all") {
     taskContainer.innerHTML = "";
 
-    taskArr.forEach((taskObj, index) => {
 
+
+    if (filter === "all") {
+        taskToShow = [...taskArr];
+
+    }
+    else if (filter === "active") {
+        taskToShow = taskArr.filter(task => task.completed === false);
+    }
+    else {
+        taskToShow = taskArr.filter(task => task.completed === true);
+
+    }
+    taskToShow.forEach((taskObj, index) => {
         // ----------html part---------
 
         const task = document.createElement("div");
@@ -54,12 +70,12 @@ function renderTasks() {
         const deleteBtn = task.querySelector(".delete-btn");
 
         deleteBtn.addEventListener("click", function () {
-
             taskArr.splice(index, 1);
 
             localStorage.setItem("tasks", JSON.stringify(taskArr));
 
-            renderTasks(); //to update the frontend whenever something is dlted
+            renderTasks();
+            //to update the frontend whenever something is dlted
 
         });
 
@@ -125,6 +141,18 @@ btn.addEventListener("click", function (dets) {
     renderTasks();
 });
 
+allBtn.addEventListener("click", function () {
+    renderTasks("all");
+
+
+});
+activeBtn.addEventListener("click", function () {
+    renderTasks("active");
+
+});
+compBtn.addEventListener("click", function () {
+    renderTasks("completed");
+});
 
 
 
